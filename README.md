@@ -1,9 +1,8 @@
-# helloworld
+# 每日都是你
 
 AstrBot 插件模板
 
-A template plugin for AstrBot plugin feature
-
+爻舜和鲸鱼小憩的秀恩爱哼哼
 # 支持
 
 [帮助文档](https://astrbot.app)
