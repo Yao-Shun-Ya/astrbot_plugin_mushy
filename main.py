@@ -1,7 +1,7 @@
 import os
 import astrbot.api.message_components as Comp 
 
-# 导入必要的 API 和组件
+# 必要的 API 和组件
 from astrbot.api.event import filter
 from astrbot.api.star import Context, Star, register
 from astrbot.core.star.filter.event_message_type import EventMessageType 
@@ -57,13 +57,13 @@ class QQSpecialReply(Star):
             yield event.plain_result(f"错误：找不到图片 {image_filename}")
             return
 
-        # 6. 拦截并发送
+        # 拦截并发送
         event.stop_event()
         
-        # 1. 构造组件
+        # 构造组件
         text_comp = Comp.Plain(reply_text)
         image_comp = Comp.Image.fromFileSystem(image_path)
         
-        # ⭐ 核心修改：将 [image_comp, text_comp] 传入，实现图片在前
+        # 图片在前
         print(f"[MUSH-DEBUG] Sending combined image then text: {image_path}")
         yield event.chain_result([image_comp, text_comp])
