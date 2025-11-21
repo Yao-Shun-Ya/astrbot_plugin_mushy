@@ -1,0 +1,68 @@
+{
+  "allowed_users": {
+    "description": "允许触发插件的QQ/用户ID列表",
+    "type": "list",
+    "hint": "请在此输入QQ/用户ID，每个ID占一行或逗号分隔",
+    "default": ["3525426079", "2720356281"],
+    "items": {
+      "type": "string",
+      "hint": "输入单个用户ID"
+    }
+  },
+  "trigger_group": {
+    "type": "object",
+    "description": "触发规则配置组",
+    "hint": "在此处配置每一条触发规则",
+    "items": {
+      
+      "rule_1": {
+        "type": "object",
+        "description": "触发规则一",
+        "hint": "点击展开配置规则一",
+        "items": {
+          "trigger": {
+            "type": "string",
+            "description": "触发关键词",
+            "default": "今日小憩"
+          },
+          "file": {
+            "type": "string",
+            "description": "图片文件名",
+            "default": "小憩.png",
+            "hint": "需放在插件目录下"
+          },
+          "msg": {
+            "type": "string",
+            "description": "回复文本",
+            "default": "鲸鱼小憩会一直和你在一起的哦～"
+          }
+        }
+      },
+
+      "rule_2": {
+        "type": "object",
+        "description": "触发规则二",
+        "hint": "点击展开配置规则二",
+        "items": {
+          "trigger": {
+            "type": "string",
+            "description": "触发关键词",
+            "default": "今日爻舜"
+          },
+          "file": {
+            "type": "string",
+            "description": "图片文件名",
+            "default": "爻舜.png",
+            "hint": "需放在插件目录下"
+          },
+          "msg": {
+            "type": "string",
+            "description": "回复文本",
+            "default": "笨蛋爻舜会一直和你在一起的哦～"
+          }
+        }
+      }
+
+    }
+  }
+}
