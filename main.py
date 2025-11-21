@@ -1,6 +1,6 @@
 import os
+from pathlib import Path
 import astrbot.api.message_components as Comp 
-
 from astrbot.api import AstrBotConfig, logger
 from astrbot.api.event import filter, AstrMessageEvent
 from astrbot.api.star import Context, Star, register
@@ -11,11 +11,13 @@ class QQSpecialReply(Star):
     def __init__(self, context: Context, config: AstrBotConfig): 
         super().__init__(context)
         self.config = config 
-        
-        raw_allowed_users = self.config.get("allowed_users", [])
+        self._load_config(config)
+
+    def _load_config(self, config: AstrBotConfig):
+        raw_allowed_users = config.get("allowed_users", [])
         self.ALLOWED_USERS_SET = {str(u) for u in raw_allowed_users}
         
-        trigger_group = self.config.get("trigger_group", {})
+        trigger_group = config.get("trigger_group", {})
         self.TRIGGER_MAP = {}
         
         if trigger_group:
@@ -49,8 +51,8 @@ class QQSpecialReply(Star):
         reply_text = data.get("msg", "")      
         image_filename = data.get("file", "")
         
-        plugin_dir = os.path.dirname(os.path.abspath(__file__))
-        image_path = os.path.join(plugin_dir, image_filename)
+        plugin_path = Path(__file__).parent
+        image_path = plugin_path / image_filename 
 
         if not os.path.exists(image_path):
             logger.error(f"Image file not found at {image_path}")
