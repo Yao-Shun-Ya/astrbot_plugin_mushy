@@ -62,7 +62,7 @@ class QQSpecialReply(Star):
         event.stop_event()
         
         text_comp = Comp.Plain(reply_text)
-        image_comp = Comp.Image.fromFileSystem(image_path)
+        image_comp = Comp.Image.fromFileSystem(str(image_path)) 
         
         message_chain = [image_comp, text_comp]
         
